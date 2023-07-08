@@ -17,7 +17,17 @@ stats = SHEET.worksheet('stats')
 
 data = stats.get_all_values()
 
+
 print(data)
+
+
+def get_available_teams():
+    av_teams = stats.col_values(4)
+    # get available teams from spreadsheet
+
+    av_teams = list(dict.fromkeys(av_teams))
+    # Remove duplicates from teams list
+    return av_teams
 
 
 def get_teams():
@@ -48,13 +58,15 @@ def startText():
     print("Welcome to EPL Match Predictor \n")
     print("Delivering profitable football predictions since 2023 \n")
     print("Enter opposing teams to receive a guaranteed* prediction \n")
-    print("Available teams are:\nArsenal, Aston Villa, Bournemouth, Brentford, Brighton,\nChelsea, Crystal Palace, Everton, Fulham, Leeds,\nLeicester, Liverpool, Man City, Man United, Newcastle,\nNottm Forest, Southampton, Tottenham, West Ham, Wolves")
+    print("Available teams are:\nArsenal, Aston Villa, Bournemouth, Brentford, Brighton,\nChelsea, Crystal Palace, Everton, Fulham, Leeds,\nLeicester, Liverpool, Man City, Man United, Newcastle,\nNottm Forest, Southampton, Tottenham, West Ham, Wolves\n")
 
 
 def main():
     startText()
     teams = get_teams()
+    av_teams = get_available_teams()
     print(teams)
+    print(av_teams)
 
 
 main()
