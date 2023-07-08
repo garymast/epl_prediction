@@ -15,8 +15,8 @@ SHEET = GSPREAD_CLIENT.open('EPL_prediction')
 
 stats = SHEET.worksheet('stats')
 
-# data = stats.get_all_values()
+data = stats.get_all_values()
 
-# print(data)
+print(data)
 f = Figlet(font='slant')
 print(f.renderText('EPL MATCH PREDICTOR'))
