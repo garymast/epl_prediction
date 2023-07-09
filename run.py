@@ -80,11 +80,8 @@ class Team:
                 if not count == 0:
                     tempMomentum += count/3
 
-            # print(i)
-            # print(count)
             count -= 1
             if count == 0:
-                # print(f"TempMomentum is: {tempMomentum}")
                 self.momentum = round(tempMomentum)
                 break
 
@@ -97,7 +94,6 @@ class Team:
 
 cTeam = Team("Liverpool")
 cTeam.addData()
-cTeam.print()
 
 
 def get_available_teams():
@@ -120,7 +116,6 @@ def print_available_teams():
     """
 
     av_teams = get_available_teams()
-    # Add validate function here if valid...
     print("The available teams are:\n")
     for team in av_teams:
         print(team)
@@ -143,14 +138,17 @@ def get_teams():
 
             data_str = input("Enter the teams:\n")
             teams = data_str.split(",")
-        if validate_data(teams):
-            print("Teams are valid!")
-            teamOne = Team(teams[0])
-            teamOne.addData()
-            teamTwo = Team(teams[1])
-            teamTwo.addData()
-            # break
-            break
+
+            if validate_data(teams):
+                print("Teams are valid!")
+                teamOne = Team(teams[0])
+                teamOne.addData()
+            
+                teamTwo = Team(teams[1])
+                teamTwo.addData()
+
+                break
+            
         elif choice == 't':
             print_available_teams()
             print("")
@@ -174,8 +172,8 @@ def validate_data(values):
                 f"Exactly 2 teams required, you provided {len(values)}"
             )
 
-        print(values)
-        print(av_teams)
+        # print(values)
+        # print(av_teams)
         for value in values:
             if value not in av_teams:
                 raise ValueError(
@@ -199,8 +197,7 @@ def startText():
     print("Welcome to EPL Match Predictor \n")
     print("Delivering profitable football predictions since 2023 \n")
     print("Enter opposing teams to receive a guaranteed* prediction \n")
-    # print("Available teams are:\nArsenal, Aston Villa, Bournemouth, Brentford, Brighton,\nChelsea, Crystal Palace, Everton, Fulham, Leeds,\nLeicester, Liverpool, Man City, Man United, Newcastle,\nNottm Forest, Southampton, Tottenham, West Ham, Wolves\n")
-
+ 
 
 def main():
     """
@@ -209,7 +206,6 @@ def main():
 
     startText()
     teamOne, teamTwo = get_teams()
-    # av_teams = get_available_teams()
     teamOne.print()
     teamTwo.print()
 
