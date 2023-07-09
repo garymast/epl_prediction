@@ -26,6 +26,9 @@ class Team:
         """
 
         self.results = []
+        self.wins = 0
+        self.draws = 0
+        self.losses = 0
         self.name = team
         self.num_games = None
         self.momentum = None
@@ -53,6 +56,9 @@ class Team:
                 count += 1
                 if homeTeam == self.name and result == 'H':
                     self.results.append('W')
+                    
+                    # currentWins = self.wins
+                    # self.wins = currentWins + 1
                 elif homeTeam == self.name and result == 'A':
                     self.results.append('L')
                 elif awayTeam == self.name and result == 'A':
@@ -76,9 +82,15 @@ class Team:
 
             if i == "W":
                 tempMomentum += count
+                self.wins += 1
+                
             elif i == "D":
                 if not count == 0:
                     tempMomentum += count/3
+                    self.draws += 1
+
+            else:
+                self.losses += 1
 
             count -= 1
             if count == 0:
@@ -87,6 +99,9 @@ class Team:
 
     def print(self):
         print(self.results)
+        print(self.wins)
+        print(self.draws)
+        print(self.losses)
         print(self.name)
         print(self.num_games)
         print(self.momentum)
@@ -133,8 +148,8 @@ def get_teams():
         choice = input("Press 's' to start or 't' to view possible teams:\n")
         if choice == 's':
 
-            print("Enter the two teams, seperated by a comma:")
-            print("Example: Arsenal, Aston Villa\n")
+            print("Enter the two teams, seperated by a comma (no spaces):")
+            print("Example: Arsenal,Aston Villa\n")
 
             data_str = input("Enter the teams:\n")
             teams = data_str.split(",")
@@ -148,7 +163,7 @@ def get_teams():
                 teamTwo.addData()
 
                 break
-            
+
         elif choice == 't':
             print_available_teams()
             print("")
@@ -198,6 +213,9 @@ def startText():
     print("Delivering profitable football predictions since 2023 \n")
     print("Enter opposing teams to receive a guaranteed* prediction \n")
  
+
+# def calcWinner(teamOne, teamTwo):
+
 
 def main():
     """
