@@ -20,7 +20,6 @@ data = stats.get_all_records(head=1)
 
 class Team:
 
-
     def __init__(self, team):
         """
         Class constructor
@@ -51,7 +50,6 @@ class Team:
             awayTeam = dic['AwayTeam']
             result = dic['FTR']
             if homeTeam == self.name or awayTeam == self.name:
-                print("Liverpool Played")
                 count += 1
                 if homeTeam == self.name and result == 'H':
                     self.results.append('W')
@@ -82,8 +80,8 @@ class Team:
                 if not count == 0:
                     tempMomentum += count/3
 
-            print(i)
-            print(count)
+            # print(i)
+            # print(count)
             count -= 1
             if count == 0:
                 # print(f"TempMomentum is: {tempMomentum}")
@@ -145,9 +143,9 @@ def get_teams():
 
             data_str = input("Enter the teams:\n")
             teams = data_str.split(",")
-        # if validate_data(teams):
-        #     print("Teams are valid!")
-        #     break
+        if validate_data(teams):
+            print("Teams are valid!")
+            # break
             break
         elif choice == 't':
             print_available_teams()
@@ -157,6 +155,24 @@ def get_teams():
             print("Invalid entry - 's' to start or 't' for possible teams")
 
     return teams
+
+
+def validate_data(values):
+    """
+    Inside the try, converts all string values into integers.
+    Raises ValueError if strings cannot be converted into int,
+    or if there aren't exactly 6 values.
+    """
+    try:
+        if len(values) != 2:
+            raise ValueError(
+                f"Exactly 2 teams required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
 
 
 def startText():
