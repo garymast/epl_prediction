@@ -83,7 +83,7 @@ class Team:
             if i == "W":
                 tempMomentum += count
                 self.wins += 1
-                
+
             elif i == "D":
                 if not count == 0:
                     tempMomentum += count/3
@@ -214,7 +214,19 @@ def startText():
     print("Enter opposing teams to receive a guaranteed* prediction \n")
  
 
-# def calcWinner(teamOne, teamTwo):
+def calcWinner(teamOne, teamTwo):
+    """
+    Predicts the game winner based on current momentum
+    """
+    
+    if teamOne.momentum > (teamTwo.momentum + 5):
+        print(f"{teamOne.name} should win this game,\nhaving won {teamOne.wins} of their past 10 games")
+
+    elif teamTwo.momentum > (teamOne.momentum + 5):
+        print(f"{teamTwo.name} should win this game,\nhaving won {teamTwo.wins} of their past 10 games")
+
+    else:
+        print(f"{teamOne.name} and {teamTwo.name} are in similar form,\nThis should be a draw")    
 
 
 def main():
@@ -224,8 +236,9 @@ def main():
 
     startText()
     teamOne, teamTwo = get_teams()
-    teamOne.print()
-    teamTwo.print()
+    calcWinner(teamOne, teamTwo)
+    # teamOne.print()
+    # teamTwo.print()
 
 
 main()
