@@ -162,7 +162,7 @@ def get_teams():
                 teamTwo = Team(teams[1])
                 teamTwo.addData()
 
-                break
+                calcWinner(teamOne, teamTwo)
 
         elif choice == 't':
             print_available_teams()
@@ -171,7 +171,7 @@ def get_teams():
         else:
             print("Invalid entry - 's' to start or 't' for possible teams")
 
-    return teamOne, teamTwo
+    # return teamOne, teamTwo
 
 
 def validate_data(values):
@@ -218,7 +218,7 @@ def calcWinner(teamOne, teamTwo):
     """
     Predicts the game winner based on current momentum
     """
-    
+
     if teamOne.momentum > (teamTwo.momentum + 5):
         print(f"{teamOne.name} should win this game,\nhaving won {teamOne.wins} of their past 10 games")
 
@@ -235,8 +235,8 @@ def main():
     """
 
     startText()
-    teamOne, teamTwo = get_teams()
-    calcWinner(teamOne, teamTwo)
+    get_teams()
+    # calcWinner(teamOne, teamTwo)
     # teamOne.print()
     # teamTwo.print()
 
