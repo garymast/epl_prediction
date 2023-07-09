@@ -22,19 +22,29 @@ class Team:
 
 
     def __init__(self, team):
+        """
+        Class constructor
+        """
 
         self.results = []
         self.name = team
         self.num_games = None
         self.momentum = None
 
-
     def addData(self):
+        """
+        Run functions to add relevant data to Team object
+        """
+
         self.addResults()
         self.calcMomentum()
 
-
     def addResults(self):
+        """
+        Add results and number of games to the
+        Team object
+        """
+
         count = 0
         for dic in data:
             homeTeam = dic['HomeTeam']
@@ -52,19 +62,35 @@ class Team:
                 elif awayTeam == self.name and result == 'H':
                     self.results.append('L')
                 else:
-                     self.results.append('D')
+                    self.results.append('D')
 
         self.num_games = count
 
-        
     def calcMomentum(self):
-        count = 0
-        for i in reversed(self.results):
-            print(i)
-            count +=1
-            if count == 10:
-                break
+        """
+        Calculate the momentum of the team, assigning
+        more weight to recent results
+        """
+        count = 10
+        tempMomentum = 0
 
+        for i in reversed(self.results):
+
+            if i == "W":
+                tempMomentum += count
+            elif i == "D":
+                if count == 0:
+                    tempMomentum = tempMomentum
+                else:
+                    tempMomentum += count/3
+
+            print(i)
+            print(count)
+            count -= 1
+            if count == 0:
+                # print(f"TempMomentum is: {tempMomentum}")
+                self.momentum = round(tempMomentum)
+                break
 
     def print(self):
         print(self.results)
@@ -79,6 +105,10 @@ cTeam.print()
 
 
 def get_available_teams():
+    """
+    Return a list containing all the teams in the league, in alphabetical order
+    """
+
     av_teams = []
     for dic in data:
         HomeTeam = dic['HomeTeam']
@@ -88,6 +118,10 @@ def get_available_teams():
 
 
 def print_available_teams():
+    """
+    Print the available teams to the terminal
+    """
+
     av_teams = get_available_teams()
     # Add validate function here if valid...
     print("The available teams are:\n")
@@ -127,6 +161,10 @@ def get_teams():
 
 
 def startText():
+    """
+    Function to print start text to the terminal on running the program
+    """
+
     f = Figlet(font='slant')
     print(f.renderText('EPL MATCH PREDICTOR'))
     print("Welcome to EPL Match Predictor \n")
@@ -136,6 +174,10 @@ def startText():
 
 
 def main():
+    """
+    Calls the required functions to run the program
+    """
+    
     startText()
     teams = get_teams()
     # av_teams = get_available_teams()
