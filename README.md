@@ -101,10 +101,15 @@ Debugging and troubleshooting was done continuously throughout the development p
 
 ## Deployment
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows: 
-  - In the GitHub repository, navigate to the Settings tab 
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+The site was deployed using Code Institute's mock terminal for Heroku:
+- Steps for Deployment:
+  - Clone the Code Institute Github Template
+  - Create Google Sheet and add relevant historical football data
+  - Enable Google Drive and Sheets API's in Google Cloud Services
+  - Create a New Heroku App
+  - Set the buildbacks to Python and NodeJS in that order
+  - Link the Heroku App to the repository
+  - Click on Deploy
 
 The live link can be found here - https://garymast.github.io/geospatial-co/index.html
 
