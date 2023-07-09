@@ -23,10 +23,47 @@ class Team:
 
     def __init__(self, team):
 
-        self.results = [1,2,3,4,5]
+        self.results = []
         self.name = team
-        self.num_games = 38
-        self.momentum = 25
+        self.num_games = None
+        self.momentum = None
+
+
+    def addData(self):
+        self.addResults()
+        self.calcMomentum()
+
+
+    def addResults(self):
+        count = 0
+        for dic in data:
+            homeTeam = dic['HomeTeam']
+            awayTeam = dic['AwayTeam']
+            result = dic['FTR']
+            if homeTeam == self.name or awayTeam == self.name:
+                print("Liverpool Played")
+                count += 1
+                if homeTeam == self.name and result == 'H':
+                    self.results.append('W')
+                elif homeTeam == self.name and result == 'A':
+                    self.results.append('L')
+                elif awayTeam == self.name and result == 'A':
+                    self.results.append('W')
+                elif awayTeam == self.name and result == 'H':
+                    self.results.append('L')
+                else:
+                     self.results.append('D')
+
+        self.num_games = count
+
+        
+    def calcMomentum(self):
+        count = 0
+        for i in reversed(self.results):
+            print(i)
+            count +=1
+            if count == 10:
+                break
 
 
     def print(self):
@@ -37,6 +74,7 @@ class Team:
 
 
 cTeam = Team("Liverpool")
+cTeam.addData()
 cTeam.print()
 
 
