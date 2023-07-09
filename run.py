@@ -192,6 +192,11 @@ def validate_data(values):
                     f"{value} is not a valid team"
                 )
 
+        if values[0] == values[1]:
+            raise ValueError(
+                "The same team has been selected twice"
+            )            
+
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
@@ -214,6 +219,7 @@ def startText():
 def calcWinner(teamOne, teamTwo):
     """
     Predicts the game winner based on current momentum
+    If team momentum is within 5 points, game predicted as a draw
     """
 
     if teamOne.momentum > (teamTwo.momentum + 5):
