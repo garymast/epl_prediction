@@ -79,9 +79,7 @@ class Team:
             if i == "W":
                 tempMomentum += count
             elif i == "D":
-                if count == 0:
-                    tempMomentum = tempMomentum
-                else:
+                if not count == 0:
                     tempMomentum += count/3
 
             print(i)
@@ -114,6 +112,7 @@ def get_available_teams():
         HomeTeam = dic['HomeTeam']
         if HomeTeam not in av_teams:
             av_teams.append(HomeTeam)
+    av_teams.sort()
     return av_teams
 
 
@@ -177,7 +176,7 @@ def main():
     """
     Calls the required functions to run the program
     """
-    
+
     startText()
     teams = get_teams()
     # av_teams = get_available_teams()
