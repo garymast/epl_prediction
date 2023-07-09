@@ -15,19 +15,28 @@ SHEET = GSPREAD_CLIENT.open('EPL_prediction')
 
 stats = SHEET.worksheet('stats')
 
-data = stats.get_all_values()
+data = stats.get_all_records(head=1)
+# change to get all records (head=1)
+# Then use the data dictionaries to search for data"
 
-
-print(data)
+# print(data)
 
 
 def get_available_teams():
-    av_teams = stats.col_values(4)
-    # get available teams from spreadsheet
-
-    av_teams = list(dict.fromkeys(av_teams))
-    # Remove duplicates from teams list
+    av_teams = []
+    for dic in data:
+        HomeTeam = dic['HomeTeam']
+        if HomeTeam not in av_teams:
+            av_teams.append(HomeTeam)
     return av_teams
+
+
+def print_available_teams():
+    av_teams = get_available_teams()
+    # Add validate function here if valid...
+    print("The available teams are:\n")
+    for team in av_teams:
+        print(team)
 
 
 def get_teams():
@@ -39,16 +48,25 @@ def get_teams():
     """
     
     while True:
-        print("Enter the two teams, seperated by a comma:")
-        # print("Data should be six numbers, separated by commas.")
-        print("Example: Arsenal, Aston Villa\n")
+        choice = input("Press 's' to start or 't' to view possible teams:\n")
+        if choice == 's':
 
-        data_str = input("Enter the teams:\n")
-        teams = data_str.split(",")
+            print("Enter the two teams, seperated by a comma:")
+            print("Example: Arsenal, Aston Villa\n")
+
+            data_str = input("Enter the teams:\n")
+            teams = data_str.split(",")
         # if validate_data(teams):
         #     print("Teams are valid!")
         #     break
-        break
+            break
+        elif choice == 't':
+            print_available_teams()
+            print("")
+
+        else:
+            print("Invalid entry - 's' to start or 't' for possible teams")
+
     return teams
 
 
@@ -58,15 +76,15 @@ def startText():
     print("Welcome to EPL Match Predictor \n")
     print("Delivering profitable football predictions since 2023 \n")
     print("Enter opposing teams to receive a guaranteed* prediction \n")
-    print("Available teams are:\nArsenal, Aston Villa, Bournemouth, Brentford, Brighton,\nChelsea, Crystal Palace, Everton, Fulham, Leeds,\nLeicester, Liverpool, Man City, Man United, Newcastle,\nNottm Forest, Southampton, Tottenham, West Ham, Wolves\n")
+    # print("Available teams are:\nArsenal, Aston Villa, Bournemouth, Brentford, Brighton,\nChelsea, Crystal Palace, Everton, Fulham, Leeds,\nLeicester, Liverpool, Man City, Man United, Newcastle,\nNottm Forest, Southampton, Tottenham, West Ham, Wolves\n")
 
 
 def main():
     startText()
     teams = get_teams()
-    av_teams = get_available_teams()
+    # av_teams = get_available_teams()
     print(teams)
-    print(av_teams)
+    # print(av_teams)
 
 
 main()
