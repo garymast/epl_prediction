@@ -145,6 +145,10 @@ def get_teams():
             teams = data_str.split(",")
         if validate_data(teams):
             print("Teams are valid!")
+            teamOne = Team(teams[0])
+            teamOne.addData()
+            teamTwo = Team(teams[1])
+            teamTwo.addData()
             # break
             break
         elif choice == 't':
@@ -154,7 +158,7 @@ def get_teams():
         else:
             print("Invalid entry - 's' to start or 't' for possible teams")
 
-    return teams
+    return teamOne, teamTwo
 
 
 def validate_data(values):
@@ -170,11 +174,13 @@ def validate_data(values):
                 f"Exactly 2 teams required, you provided {len(values)}"
             )
 
+        print(values)
+        print(av_teams)
         for value in values:
             if value not in av_teams:
                 raise ValueError(
                     f"{value} is not a valid team"
-            )
+                )
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
@@ -202,10 +208,10 @@ def main():
     """
 
     startText()
-    teams = get_teams()
+    teamOne, teamTwo = get_teams()
     # av_teams = get_available_teams()
-    print(teams)
-    # print(av_teams)
+    teamOne.print()
+    teamTwo.print()
 
 
 main()
