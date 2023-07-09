@@ -16,10 +16,28 @@ SHEET = GSPREAD_CLIENT.open('EPL_prediction')
 stats = SHEET.worksheet('stats')
 
 data = stats.get_all_records(head=1)
-# change to get all records (head=1)
-# Then use the data dictionaries to search for data"
 
-# print(data)
+
+class Team:
+
+
+    def __init__(self, team):
+
+        self.results = [1,2,3,4,5]
+        self.name = team
+        self.num_games = 38
+        self.momentum = 25
+
+
+    def print(self):
+        print(self.results)
+        print(self.name)
+        print(self.num_games)
+        print(self.momentum)
+
+
+cTeam = Team("Liverpool")
+cTeam.print()
 
 
 def get_available_teams():
