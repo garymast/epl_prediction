@@ -163,11 +163,19 @@ def validate_data(values):
     Raises ValueError if strings cannot be converted into int,
     or if there aren't exactly 6 values.
     """
+    av_teams = get_available_teams()
     try:
         if len(values) != 2:
             raise ValueError(
                 f"Exactly 2 teams required, you provided {len(values)}"
             )
+
+        for value in values:
+            if value not in av_teams:
+                raise ValueError(
+                    f"{value} is not a valid team"
+            )
+
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
