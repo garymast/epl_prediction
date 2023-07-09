@@ -56,9 +56,6 @@ class Team:
                 count += 1
                 if homeTeam == self.name and result == 'H':
                     self.results.append('W')
-                    
-                    # currentWins = self.wins
-                    # self.wins = currentWins + 1
                 elif homeTeam == self.name and result == 'A':
                     self.results.append('L')
                 elif awayTeam == self.name and result == 'A':
@@ -143,7 +140,7 @@ def get_teams():
     via the terminal, which must be strings matching the specified teams
     The loop will repeatedly request data, until it is valid.
     """
-    
+
     while True:
         choice = input("Press 's' to start or 't' to view possible teams:\n")
         if choice == 's':
@@ -158,7 +155,7 @@ def get_teams():
                 print("Teams are valid!")
                 teamOne = Team(teams[0])
                 teamOne.addData()
-            
+
                 teamTwo = Team(teams[1])
                 teamTwo.addData()
 
@@ -212,7 +209,7 @@ def startText():
     print("Welcome to EPL Match Predictor \n")
     print("Delivering profitable football predictions since 2023 \n")
     print("Enter opposing teams to receive a guaranteed* prediction \n")
- 
+
 
 def calcWinner(teamOne, teamTwo):
     """
@@ -220,13 +217,16 @@ def calcWinner(teamOne, teamTwo):
     """
 
     if teamOne.momentum > (teamTwo.momentum + 5):
-        print(f"{teamOne.name} should win this game,\nhaving won {teamOne.wins} of their past 10 games")
+        print(f"{teamOne.name} should win this game, "
+              f"having won {teamOne.wins} of their past 10 games")
 
     elif teamTwo.momentum > (teamOne.momentum + 5):
-        print(f"{teamTwo.name} should win this game,\nhaving won {teamTwo.wins} of their past 10 games")
+        print(f"{teamTwo.name} should win this game, "
+              f"having won {teamTwo.wins} of their past 10 games")
 
     else:
-        print(f"{teamOne.name} and {teamTwo.name} are in similar form,\nThis should be a draw")    
+        print(f"{teamOne.name} and {teamTwo.name} are in similar form, "
+              "This should be a draw")
 
 
 def main():
@@ -242,4 +242,3 @@ def main():
 
 
 main()
-
