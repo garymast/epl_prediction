@@ -23,7 +23,7 @@ The user is then given options to enter further team selections.
 - View Possible teams
   - The user can press 't' to view all available teams, sorted alphabetically
 
-![Welcome Message](images/WelcomeMessage.jpg) 
+![Available Teams](images/avTeams.jpg) 
 
 - Input validation and error-checking
   - You cannot enter the same team for both home and away
@@ -47,6 +47,14 @@ The program then searches the linked google sheet for the relevant results for e
 
 The program then calculates the teams 'momentum' based on their past 10 results, with a weighting applied to more recent games. If a team has a momentum that is at least 5 more than the opposition, that team is predicted as the winner. If the momentum is within 5 points either way, the game is too close to call and a draw is predicted.
 
+# External Libraries
+- pyFiglet
+  - This was used to create some graphical text for the name of the program in the welcome message
+- gspread
+  - Python API for google sheets
+- google oauth2
+  - Google OAuth 2.0 Library for credentials
+
 # Testing
 - I have manually tested the project by doing the following
   - Passed the code through a PEP8 Linter and confirmed there are no problems
@@ -65,7 +73,7 @@ The program then calculates the teams 'momentum' based on their past 10 results,
 - PEP8
   - No errors were returned from PEP8online.com
 
-## Deployment
+# Deployment
 
 The site was deployed using Code Institute's mock terminal for Heroku:
 - Steps for Deployment:
