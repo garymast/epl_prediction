@@ -167,9 +167,8 @@ def get_teams():
 
 def validate_data(values):
     """
-    Inside the try, converts all string values into integers.
-    Raises ValueError if strings cannot be converted into int,
-    or if there aren't exactly 6 values.
+    Inside the try, Raises ValueError if strings do not match available teams,
+    if there aren't exactly 2 values, or if the same team is entered twice.
     """
     av_teams = get_available_teams()
     try:
