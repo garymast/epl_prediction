@@ -4,25 +4,40 @@
 
 [Link To Live Project](https://gm-epl-prediction-dedf30f0a371.herokuapp.com/)
 
-![Responsive Mockup](images/amIResponsive.jpg)
+# How it works
 
-# How to Use
-- ## Wireframes
-  - I (roughly) hand drew the wireframe for the site using pen and paper. The layout changed slightly as the site developed.
-  
-![Wireframe](images/amIResponsive.jpg)
+The user is prompted to enter two teams from the current season of the English Premier League.
 
-- ## Design Choices
-  - Color Scheme
+The program then validates the entered teams and calculates a match prediction based on the recent form of both teams.
 
-![Color Scheme](assets/images/readme_images/colour-pallete.png) 
+The user is then given options to enter further team selections.
 
-  - Typography
-    - The website uses two different fonts both from google fonts:
-      1. Quicksand
-      2. Lato
+# Features
 
-## Feaures 
+- Welcome Message
+  - A welcome message is written to the terminal, providing the user with guidelines on the use of the program
+
+![Welcome Message](images/WelcomeMessage.jpg) 
+
+- Accepts user input
+- View Possible teams
+  - The user can press 't' to view all available teams, sorted alphabetically
+
+![Welcome Message](images/WelcomeMessage.jpg) 
+
+- Input validation and error-checking
+  - You cannot enter the same team for both home and away
+  - There must be exactly two teams entered
+  - The teams entered nmust match exactly, two teams in the available teams list
+- Google Sheets and Drive API Connectivity
+- Data maintained in class instances
+
+# Future Feaures
+
+- Write each prediction to google sheets and provide a summary of the predictions on user request
+- Add additional analysis to improve predictions. For example, "Home Advantage"
+- Scrape current weeks fixtures from the web and automatically predict all games
+- Improve the programs UI by adding colour and additional styling
 
 ### Existing Features
 

@@ -104,10 +104,6 @@ class Team:
         print(self.momentum)
 
 
-cTeam = Team("Liverpool")
-cTeam.addData()
-
-
 def get_available_teams():
     """
     Return a list containing all the teams in the league, in alphabetical order
@@ -168,8 +164,6 @@ def get_teams():
         else:
             print("Invalid entry - 's' to start or 't' for possible teams")
 
-    # return teamOne, teamTwo
-
 
 def validate_data(values):
     """
@@ -184,8 +178,6 @@ def validate_data(values):
                 f"Exactly 2 teams required, you provided {len(values)}"
             )
 
-        # print(values)
-        # print(av_teams)
         for value in values:
             if value not in av_teams:
                 raise ValueError(
@@ -195,7 +187,7 @@ def validate_data(values):
         if values[0] == values[1]:
             raise ValueError(
                 "The same team has been selected twice"
-            )            
+            )
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
@@ -242,9 +234,6 @@ def main():
 
     startText()
     get_teams()
-    # calcWinner(teamOne, teamTwo)
-    # teamOne.print()
-    # teamTwo.print()
 
 
 main()
